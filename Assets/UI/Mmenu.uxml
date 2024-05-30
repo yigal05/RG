@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Dise%C3%B1oMenu.uss?fileID=7433441132597879392&amp;guid=c2944e22da78c934e8614b438bcbea7a&amp;type=3#DiseñoMenu" />
+    <ui:VisualElement name="principal" class="principal" style="justify-content: center;">
+        <ui:VisualElement name="arriba" class="arriba">
+            <ui:Label text="R" display-tooltip-when-elided="true" name="R" class="letras" style="color: rgb(255, 28, 0); -unity-text-outline-width: 0; -unity-text-outline-color: rgba(0, 0, 0, 255);" />
+            <ui:Label text="G" display-tooltip-when-elided="true" name="G" class="letras" style="color: rgb(85, 214, 0);" />
+            <ui:Label text="B" display-tooltip-when-elided="true" name="B" class="letras" style="color: rgb(0, 63, 255);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="abajo" class="abajo" style="flex-direction: row;">
+            <ui:VisualElement name="arbol" class="arbol" style="background-image: url(&apos;project://database/Assets/sprites/idle.png?fileID=8793639957104055765&amp;guid=dd394d614bcd5a44a875ec22fc223af1&amp;type=3#idle_0&apos;);" />
+            <ui:VisualElement name="botones" class="botones">
+                <ui:Button text="Empezar" display-tooltip-when-elided="true" name="empezar" class="boton" style="background-color: rgb(255, 0, 0);" />
+                <ui:Button text="Ajustes" display-tooltip-when-elided="true" name="ajustes" class="boton" style="background-color: rgb(45, 233, 0);" />
+                <ui:Button text="Salir" display-tooltip-when-elided="true" name="salir" class="boton" style="background-color: rgb(0, 10, 65);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="arbol" class="arbol" style="background-image: url(&apos;project://database/Assets/sprites/arbol.png?fileID=21300000&amp;guid=205f265623588364c97b560d2b3d877a&amp;type=3#arbol&apos;);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

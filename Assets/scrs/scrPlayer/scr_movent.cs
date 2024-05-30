@@ -62,7 +62,7 @@ public class scr_movent : MonoBehaviour
 
         }
         if (transform.position.y <= -7.6f) /*si la posicion y es menor a -7-6f significa que perdimos y estamos saliendo de la pantalla.
-        haci que con lo siguiente lo llevamos al checkpoint,reactiamos la plataforma con la que perdimos y colocamos el fondo*/
+        asi que con lo siguiente lo llevamos al checkpoint,reactiamos la plataforma con la que perdimos y colocamos el fondo*/
 
         {
             GetComponent<SpriteRenderer>().flipX=false;
@@ -116,7 +116,7 @@ public class scr_movent : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.name=="detector"){
-            Debug.Log("ya xncklansfklnsd");
+            Debug.Log("la camara puede moverse");
             camara.gameObject.GetComponent<scamara>().enabled = false; }       
     }
 
