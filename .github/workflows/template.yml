@@ -1,55 +1,53 @@
-name: GameCI Template 🎮
-
-on: push
-
-env:
-  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-
 jobs:
- buildWebGL:
-   name: Build for WebGL 🖥️
-   runs-on: ubuntu-latest
-   strategy:
-     fail-fast: false
-   steps:
-     - name: Checkout code
-       uses: actions/checkout@v3
+  buildAndroid:
+    name: Build for Android 📱
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-     - name: Create LFS file list
-       run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+      - name: Create LFS file list
+        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
 
-     - name: Restore LFS cache
-       uses: actions/cache@v3
-       id: lfs-cache
-       with:
-         path: .git/lfs
-         key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
+      - name: Restore LFS cache
+        uses: actions/cache@v3
+        id: lfs-cache
+        with:
+          path: .git/lfs
+          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
 
-     - name: Git LFS Pull
-       run: |
-         git lfs pull
-         git add .
-         git reset --hard
+      - name: Git LFS Pull
+        run: |
+          git lfs pull
+          git add .
+          git reset --hard
 
-     - name: Restore Library cache
-       uses: actions/cache@v3
-       with:
-         path: Library
-         key: Library-build-WebGL
-         restore-keys: |
-           Library-build-
-           Library-
+      - name: Restore Library cache
+        uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-build-Android
+          restore-keys: |
+            Library-build-
+            Library-
 
-     - name: Set up Node.js
-       uses: actions/setup-node@v3
-       with:
-         node-version: 20
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
 
-     - uses: webbertakken/unity-builder@v2
-       with:
-         targetPlatform: WebGL
+      - name: Build Android APK
+        uses: webbertakken/unity-builder@v2
+        with:
+          targetPlatform: Android
 
-     - uses: actions/upload-artifact@v3
-       with:
-         name: build-WebGL
-         path: build/WebGL
+      - name: List build directory
+        run: ls -R build/Android
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-Android
+          path: build/Android
